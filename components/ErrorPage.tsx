@@ -13,8 +13,13 @@ export function ErrorPage({ statusCode }: { statusCode: number }) {
           <h1>Error Loading Page</h1>
 
           {statusCode && <p>Error code: {statusCode}</p>}
-
-          <img src='/error.png' alt='Error' className={styles.errorImage} />
+          <img
+            src='/error.png'
+            alt='Error'
+            className={styles.errorImage}
+            width={500}
+            height={500}
+          />
         </main>
       </div>
     </>
