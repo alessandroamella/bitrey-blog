@@ -1,6 +1,14 @@
 {
   "root": true,
-  "extends": ["@fisch0920/eslint-config"],
+  "extends": ["@fisch0920/eslint-config", "plugin:@next/next/recommended"],
+  "ignorePatterns": [
+    "node_modules",
+    "build",
+    "dist",
+    "coverage",
+    "public",
+    "*.css"
+  ],
   "rules": {
     "react/prop-types": "off",
     "unicorn/no-array-reduce": "off",

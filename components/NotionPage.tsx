@@ -185,7 +185,7 @@ export function NotionPage({
   const { isDarkMode } = useDarkMode()
 
   const siteMapPageUrl = React.useMemo(() => {
-    const params: any = {}
+    const params: { lite?: string } = {}
     if (lite) params.lite = lite
 
     const searchParams = new URLSearchParams(params)
@@ -232,6 +232,7 @@ export function NotionPage({
 
   if (!config.isServer) {
     // add important objects to the window global for easy debugging
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     const g = window as any
     g.pageId = pageId
     g.recordMap = recordMap
