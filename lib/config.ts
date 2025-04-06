@@ -200,11 +200,9 @@ function cleanPageUrlMap(
 
     const path = uri.slice(1)
 
-    return {
-      ...acc,
-      [path]: uuid
-    }
-  }, {})
+    acc[path] = uuid
+    return acc
+  }, {} as PageUrlOverridesMap)
 }
 
 function invertPageUrlOverrides(
@@ -213,9 +211,7 @@ function invertPageUrlOverrides(
   return Object.keys(pageUrlOverrides).reduce((acc, uri) => {
     const pageId = pageUrlOverrides[uri]
 
-    return {
-      ...acc,
-      [pageId]: uri
-    }
-  }, {})
+    acc[pageId] = uri
+    return acc
+  }, {} as PageUrlOverridesInverseMap)
 }
