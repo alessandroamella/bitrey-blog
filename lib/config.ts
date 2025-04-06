@@ -125,7 +125,7 @@ export const redisPassword: string | null = getEnv('REDIS_PASSWORD', null)
 export const redisUser: string = getEnv('REDIS_USER', 'default')
 export const redisUrl = getEnv(
   'REDIS_URL',
-  `redis://${redisUser}:${redisPassword}@${redisHost}`
+  `redis://${redisUser}${redisPassword ? `:${redisPassword}` : ''}@${redisHost}`
 )
 export const redisNamespace: string | null = getEnv(
   'REDIS_NAMESPACE',
