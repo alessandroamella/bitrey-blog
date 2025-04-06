@@ -1,5 +1,6 @@
 import ky from 'ky'
 import { type NextApiRequest, type NextApiResponse } from 'next'
+import Image from 'next/image'
 import { ImageResponse } from 'next/og'
 import { type PageBlock } from 'notion-types'
 import {
@@ -55,8 +56,11 @@ export default async function OGImage(
         }}
       >
         {pageInfo.image && (
-          <img
+          <Image
             src={pageInfo.image}
+            width={1200}
+            height={630}
+            alt='Social Image'
             style={{
               position: 'absolute',
               width: '100%',
@@ -140,8 +144,11 @@ export default async function OGImage(
               zIndex: '5'
             }}
           >
-            <img
+            <Image
               src={pageInfo.authorImage}
+              alt='Author Image'
+              width={128}
+              height={128}
               style={{
                 width: '100%',
                 height: '100%'

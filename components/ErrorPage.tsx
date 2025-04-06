@@ -1,3 +1,6 @@
+import Image from 'next/image'
+
+import errorImage from '../public/error.png'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
@@ -13,13 +16,7 @@ export function ErrorPage({ statusCode }: { statusCode: number }) {
           <h1>Error Loading Page</h1>
 
           {statusCode && <p>Error code: {statusCode}</p>}
-          <img
-            src='/error.png'
-            alt='Error'
-            className={styles.errorImage}
-            width={500}
-            height={500}
-          />
+          <Image src={errorImage} alt='Error' className={styles.errorImage} />
         </main>
       </div>
     </>
