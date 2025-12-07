@@ -4,17 +4,17 @@
  * This file pulls from the root "site.config.ts" as well as environment variables
  * for optional depenencies.
  */
+import type { PostHogConfig } from 'posthog-js'
 import { parsePageId } from 'notion-utils'
-import { type PostHogConfig } from 'posthog-js'
 
-import { getEnv, getSiteConfig } from './get-config-value'
-import { type NavigationLink } from './site-config'
-import {
-  type NavigationStyle,
-  type PageUrlOverridesInverseMap,
-  type PageUrlOverridesMap,
-  type Site
+import type { NavigationLink } from './site-config'
+import type {
+  NavigationStyle,
+  PageUrlOverridesInverseMap,
+  PageUrlOverridesMap,
+  Site
 } from './types'
+import { getEnv, getSiteConfig } from './get-config-value'
 
 export const rootNotionPageId: string = parsePageId(
   getSiteConfig('rootNotionPageId'),
@@ -26,10 +26,8 @@ if (!rootNotionPageId) {
 }
 
 // if you want to restrict pages to a single notion workspace (optional)
-export const rootNotionSpaceId: string | null = parsePageId(
-  getSiteConfig('rootNotionSpaceId', null),
-  { uuid: true }
-)
+export const rootNotionSpaceId: string | null =
+  parsePageId(getSiteConfig('rootNotionSpaceId', null), { uuid: true }) || null
 
 export const pageUrlOverrides = cleanPageUrlMap(
   getSiteConfig('pageUrlOverrides', {}) || {},
